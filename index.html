@@ -103,7 +103,7 @@ input,textarea{border:1px solid var(--line);border-radius:6px;padding:11px 14px;
 <header><div class="wrap bar">
   <a class="logo" href="#home" aria-label="Keyhaus home">
     <svg width="40" height="40" viewBox="0 0 40 40" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="rotate(-40 20 20)"><circle cx="9" cy="20" r="6.5"/><circle cx="9" cy="20" r="2"/><path d="M15.5 20h19M29 20v6M34 20v4.5"/></g></svg>Keyhaus</a>
-  <nav><a href="#home" id="n0">Home</a><a href="#browse" id="n1">Apartments</a><a href="#team" id="n2">Meet the Team</a><a href="#contact" id="n3">Contact Us</a></nav>
+  <nav><a href="#home" id="n0">Home</a><a href="#browse" id="n1">Browse</a><a href="#team" id="n2">Meet the Team</a><a href="#contact" id="n3">Contact Us</a></nav>
 </div></header>
 
 <main id="v-home">
@@ -134,7 +134,7 @@ input,textarea{border:1px solid var(--line);border-radius:6px;padding:11px 14px;
 
 <main id="v-team" hidden>
   <div class="wrap">
-    <section class="phero"><h1>Meet the team.</h1><p>The people behind Keyhaus, and who to ask for what.</p></section>
+    <section class="phero"><h1>Meet the team.</h1><p>The people behind Keyhaus.</p></section>
     <div class="org">
       <div class="node ceo"><div class="av">WC</div><b>Warren Cavanaugh</b><span>Chief Executive Officer</span></div>
       <div class="stem"></div>
@@ -268,7 +268,7 @@ $("#branches").style.setProperty("--n",Object.keys(TEAM).length);
 function route(){PAGES.forEach((p,i)=>{$("#v-"+p).hidden=p!==page;$("#n"+i).className=p===page?"on":""});
   document.title={home:"Keyhaus | Premium Apartments in Los Santos",browse:"Apartments | Keyhaus",team:"Meet the Team | Keyhaus",contact:"Contact Us | Keyhaus"}[page];window.scrollTo(0,0)}
 document.addEventListener("click",e=>{
-  const a=e.target.closest("a[href^='#']");if(!a)return;
+  const a=e.target.closest("a[href^='#']");if(!a)return;  
   const p=a.getAttribute("href").slice(1);if(!PAGES.includes(p))return;
   e.preventDefault();page=p;
   try{history.replaceState(null,"",a.getAttribute("href"))}catch(_){}
