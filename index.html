@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Keyhaus | Apartments in Los Santos</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%230c1416'/%3E%3Cg transform='translate(10 6.5) scale(1.5)'%3E%3Cg transform='rotate(-35 32 34)' fill='none' stroke='%2335d0b5' stroke-width='4.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 33L19 20l13 13v14H6z'/%3E%3Ccircle cx='19' cy='38.5' r='2.6' fill='%2335d0b5' stroke='none'/%3E%3Cpath d='M32 41h27M50 41v9M57 41v6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0c1416;--panel:#131f22;--panel2:#1b2b2f;--line:#243539;--acc:#35d0b5;--ink:#eaf3f2;--mute:#8fa5a6;--on:#06201b;--stem:#3a5156;--accbg:#1c3a2f;--acct:#78d7ae;--bad:#f0937c;--badbg:#3f221c;--goldbg:#3b2f0e;--gold:#f2c94c;--goldline:#6e5817;--grnbg:#10331f;--grn:#6ee7a0;--grnline:#1f5a36;--blubg:#10294a;--blu:#7cc0ff;--bluline:#245086;--r:8px}
@@ -20,7 +21,7 @@ button,input,textarea,select{font:inherit;color:inherit}
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
 header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:84px}
-.logo svg{stroke:var(--acc);fill:none}
+.logo svg{flex:none}.fl{display:flex;align-items:center;gap:10px}
 .logo{display:flex;align-items:center;gap:12px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:27px;text-decoration:none;color:var(--ink)}
 nav{display:flex;gap:34px}
 nav a{padding:10px 0;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:2px solid transparent}
@@ -122,16 +123,16 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
 #tcards{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}</style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="kh" viewBox="0 0 128 128"><rect width="128" height="128" rx="28" style="fill:var(--panel)"/><g transform="translate(10 6.5) scale(1.5)"><g transform="rotate(-35 32 34)" fill="none" style="stroke:var(--acc)" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 33L19 20l13 13v14H6z"/><circle cx="19" cy="38.5" r="2.6" style="fill:var(--acc)" stroke="none"/><path d="M32 41h27M50 41v9M57 41v6"/></g></g></symbol></svg>
 <div class="ann">Now leasing across Los Santos &middot; Weekly and monthly rents &middot; <a href="#contact" style="color:inherit">Book a viewing</a></div>
 <header><div class="wrap bar">
-  <a class="logo" href="#home" aria-label="Keyhaus home">
-    <svg width="40" height="40" viewBox="0 0 40 40" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="rotate(-40 20 20)"><circle cx="9" cy="20" r="6.5"/><circle cx="9" cy="20" r="2"/><path d="M15.5 20h19M29 20v6M34 20v4.5"/></g></svg>Keyhaus</a>
+  <a class="logo" href="#home" aria-label="Keyhaus home"><svg width="56" height="56" aria-hidden="true"><use href="#kh"/></svg>Keyhaus</a>
   <nav><a href="#home" id="n0">Home</a><a href="#browse" id="n1">Browse</a><a href="#team" id="n2">Meet the Team</a><a href="#contact" id="n3" class="nb">Contact Us</a></nav>
 </div></header>
 
 <main id="v-home">
   <section class="hero">
-    <svg class="art" viewBox="0 0 600 580" preserveAspectRatio="xMaxYMid meet" fill="none" aria-hidden="true"><g transform="rotate(-35 330 290)" style="stroke:var(--acc)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".45"><circle cx="190" cy="290" r="95"/><circle cx="190" cy="290" r="34"/><path d="M285 290h300M500 290v70M560 290v50"/></g></svg>
+    <svg class="art" viewBox="0 0 600 580" preserveAspectRatio="xMaxYMid meet" fill="none" aria-hidden="true"><g transform="translate(90 -5) scale(6.8)" opacity=".45"><g transform="rotate(-35 32 34)" style="stroke:var(--acc)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 33L19 20l13 13v14H6z"/><circle cx="19" cy="38.5" r="1.8" style="fill:var(--acc)" stroke="none"/><path d="M32 41h27M50 41v9M57 41v6"/></g></g></svg>
     <div class="wrap"><div class="eye">Premium residential leasing</div>
       <h1>Welcome to <span class="gt">Keyhaus.</span></h1>
       <p>Personalized service. Exceptional apartments. Explore the latest listings across Los Santos.</p>
@@ -192,7 +193,7 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
   </div>
 </main>
 
-<footer class="wrap foot"><div><a href="#home">Home</a><a href="#browse">Browse</a><a href="#team">Meet the Team</a><a href="#contact">Contact Us</a></div><div>Keyhaus &middot; Los Santos, San Andreas &middot; &copy; 2026</div></footer>
+<footer class="wrap foot"><div><a href="#home">Home</a><a href="#browse">Browse</a><a href="#team">Meet the Team</a><a href="#contact">Contact Us</a></div><div class="fl"><svg width="30" height="30" aria-hidden="true"><use href="#kh"/></svg>Keyhaus &middot; Los Santos, San Andreas &middot; &copy; 2026</div></footer>
 
 <div class="sw" role="group" aria-label="Try a color palette"><span>Palette</span><button type="button" data-t="" title="Midnight Teal" aria-label="Midnight Teal" style="background:#35d0b5"></button><button type="button" data-t="coral" title="Ink &amp; Coral" aria-label="Ink &amp; Coral" style="background:#ff7a59"></button><button type="button" data-t="forest" title="Forest &amp; Sage" aria-label="Forest &amp; Sage" style="background:#a8d98f"></button><button type="button" data-t="navy" title="Navy &amp; Ice" aria-label="Navy &amp; Ice" style="background:#7cc0ff"></button><button type="button" data-t="violet" title="Dusk Violet" aria-label="Dusk Violet" style="background:#a78bfa"></button></div>
 <dialog id="dlg" aria-labelledby="dName"></dialog>
@@ -218,8 +219,6 @@ const APTS = [
  {id:"l3",t:"L",n:"La Mesa Garden Unit",h:"La Mesa, 11 Placeholder Rd",bd:1,ba:1,r:[650,2400],a:0,f:["Ground floor","Small garden","Pet friendly"]},
  {id:"l4",t:"L",n:"Vespucci Canals Room",h:"Vespucci Canals, 12 Placeholder Ln",bd:1,ba:1,r:[700,2600],a:1,pk:"Street parking",f:["Near the canals","Shared laundry"]}
 ];
-
-
 /* ===== HIGH-END (parked for now) =====
    To bring it back: add this tier line inside TIERS, move the 4 apartments into APTS, and add h1/h2 to FEAT.
    H:["High-End","Premium residences with views and full service."]
