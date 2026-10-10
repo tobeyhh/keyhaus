@@ -166,7 +166,7 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
     <div class="org">
       <div class="node ceo"><div class="av">WC</div><b>Warren Cavanaugh</b><span>Chief Executive Officer</span></div>
       <div class="stem"></div>
-      <div class="node ceo"><div class="av">C</div><b>COO Name</b><span>Chief Operations Officer</span></div>
+      <div class="node ceo"><div class="av">C</div><b>Sienna Bordeaux</b><span>Chief Operations Officer</span></div>
       <div class="stem"></div>
       <div class="branches" id="branches"></div>
     </div>
@@ -202,20 +202,24 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
 const WEBHOOK = "https://discord.com/api/webhooks/1556989682774974527/en_15dDXdww8OMQPrIcFk138cxzdfNUdTQAuW9zzRnvX8Dsdf_g13ETMAj2DcZcA2CCO"; // Discord webhook for inquiries
 const HERO_IMAGE = ""; // Optional: URL of a wide photo for the home page banner
 const FEAT = ["m1","m2","l1","l2"]; // Apartment IDs shown on the home page
-const IMAGES = {};  // Optional: { "apartment-id": ["url1","url2","url3"] }
+const IMAGES = {
+
+    m1:["https://i.imgur.com/0Z5g6kG.jpg","https://i.imgur.com/3X9Q2bH.jpg","https://i.imgur.com/4Y8j1kL.jpg"],
+    m2:["https://i.imgur.com/5Y7k2mN.jpg","https://i.imgur.com/6Z8l3nO.jpg","https://i.imgur.com/7A9m4pP.jpg"],
+};  // Optional: { "apartment-id": ["url1","url2","url3"] }
 
 /* ===== LISTINGS: edit freely. rent: [weekly, monthly] ===== */
 const TIERS = {M:["Medium-End","Comfortable, well-located apartments for everyday living."], L:["Low-End","Simple, affordable places to start from."]};
 const APTS = [
- {id:"m1",t:"M",n:"Alta Street Flat",h:"Alta, 5 Placeholder St",bd:2,ba:1,bal:1,r:[1500,5600],a:1,pk:"Garage x1",f:["Modern kitchen","In-unit laundry"]},
- {id:"m2",t:"M",n:"Mirror Park Studio Plus",h:"Mirror Park, 6 Placeholder Dr",bd:1,ba:1,r:[1200,4500],a:1,pk:"Street parking",f:["Lake-side street","Hardwood floors","Bike storage"]},
- {id:"m3",t:"M",n:"Little Seoul Corner Unit",h:"Little Seoul, 7 Placeholder Ave",bd:2,ba:2,r:[1400,5200],a:0,pk:"Garage x1",f:["Corner windows","Walk to shops","Secure entry"]},
- {id:"m4",t:"M",n:"Burton Courtyard Apartment",h:"Burton, 8 Placeholder Way",bd:1,ba:1,r:[1300,4800],a:1,pk:"Street parking",f:["Private courtyard","Updated bathroom","Storage unit"]},
+ {id:"m1",t:"M",n:"The Emissary Apartment Complex - Floor 7, Room 12",h:"Elgin Avenue, Pillbox Hill",bd:2,ba:1,bal:1,r:[15000,60000],a:1,pk:"Garage x1",f:["Modern kitchen","In-unit laundry"]},
+ {id:"m2",t:"M",n:"Galileo House - Floor 3, Room 2",h:"Spanish Avenue, East Vinewood",bd:1,ba:1,r:[15000,60000],a:1,pk:"Street parking",f:["Lake-side street","Hardwood floors","Bike storage"]},
  {id:"l1",t:"L",n:"Strawberry Walk-up",h:"Strawberry, 9 Placeholder St",bd:1,ba:1,r:[600,2200],a:1,pk:"Street parking",f:["Furnished option","Utilities nearby"]},
  {id:"l2",t:"L",n:"Davis Block Studio",h:"Davis, 10 Placeholder Ave",bd:0,ba:1,r:[500,1900],a:1,pk:"Street parking",f:["Studio layout","Kitchenette"]},
  {id:"l3",t:"L",n:"La Mesa Garden Unit",h:"La Mesa, 11 Placeholder Rd",bd:1,ba:1,r:[650,2400],a:0,f:["Ground floor","Small garden","Pet friendly"]},
  {id:"l4",t:"L",n:"Vespucci Canals Room",h:"Vespucci Canals, 12 Placeholder Ln",bd:1,ba:1,r:[700,2600],a:1,pk:"Street parking",f:["Near the canals","Shared laundry"]}
 ];
+
+
 /* ===== HIGH-END (parked for now) =====
    To bring it back: add this tier line inside TIERS, move the 4 apartments into APTS, and add h1/h2 to FEAT.
    H:["High-End","Premium residences with views and full service."]
@@ -320,7 +324,7 @@ document.querySelectorAll("#v-home .blk,#v-home .feat-sec,#v-home .part-sec,.sta
 const PAGES=["home","browse","team","contact"];let page=PAGES.includes(location.hash.slice(1))?location.hash.slice(1):"home";
 $("#branches").style.setProperty("--n",Object.keys(TEAM).length);
 function route(){PAGES.forEach((p,i)=>{$("#v-"+p).hidden=p!==page;$("#n"+i).className=p===page?"on":""});
-  document.title={home:"Keyhaus | Premium Apartments in Los Santos",browse:"Apartments | Keyhaus",team:"Meet the Team | Keyhaus",contact:"Contact Us | Keyhaus"}[page];window.scrollTo(0,0)}
+  document.title={home:"Keyhaus | Home",browse:"Keyhaus | Apartments",team:"Meet the Team | Keyhaus",contact:"Contact Us | Keyhaus"}[page];window.scrollTo(0,0)}
 document.addEventListener("click",e=>{
   const a=e.target.closest("a[href^='#']");if(!a)return;
   const p=a.getAttribute("href").slice(1);if(!PAGES.includes(p))return;
