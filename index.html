@@ -119,7 +119,7 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
 @media(max-width:900px){.g3{grid-template-columns:1fr 1fr}}@media(max-width:600px){.g3{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 .feat-sec{padding:0 28px 84px;text-align:center}.part-sec{padding:0 28px 96px;text-align:center}.part-sec>p{margin:0 auto}.feat-sec h2{margin-bottom:24px}
-</style>
+#tcards{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}</style>
 </head>
 <body>
 <div class="ann">Now leasing across Los Santos &middot; Weekly and monthly rents &middot; <a href="#contact" style="color:inherit">Book a viewing</a></div>
@@ -139,7 +139,7 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
       <div class="loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Alta Street &middot; Pillbox Hill</div></div>
   </section>
   <div class="wrap stats" id="stats"></div>
-  <section class="wrap blk" style="padding-top:84px"><div class="eye">Browse by tier</div><h2>Three tiers. One standard of service.</h2><p>Choose the level of living that fits you, from simple starter apartments to premium penthouses.</p><div class="g3" id="tcards"></div></section>
+  <section class="wrap blk" style="padding-top:84px"><div class="eye">Browse by tier</div><h2>Two tiers. One standard of service.</h2><p>Choose the level of living that fits you, from simple starter apartments to comfortable everyday living.</p><div class="g3" id="tcards"></div></section>
   <section class="wrap feat-sec"><div class="eye">Available at Keyhaus</div><h2>Featured apartments</h2><div class="grid" id="feat"></div>
     <a class="cta" href="#browse">View all apartments <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a></section>
   <section class="wrap blk"><div class="eye">Why Keyhaus</div><h2>Renting, done properly.</h2><p>Everything you need from the first inquiry to the day you get your keys.</p><div class="g3" id="why"></div></section>
@@ -149,7 +149,7 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
 
 <main id="v-browse">
   <div class="wrap">
-    <section class="phero"><h1>Find the apartment that fits your life in Los Santos.</h1><p>Browse available apartments across three tiers, compare rents by the week or the month, and send an inquiry in a minute.</p></section>
+    <section class="phero"><h1>Find the apartment that fits your life in Los Santos.</h1><p>Browse available apartments across two tiers, compare rents by the week or the month, and send an inquiry in a minute.</p></section>
     <div class="filters" role="group" aria-label="Filters">
       <div class="seg" id="fTier"></div>
       <div class="seg" id="fAvail"></div>
@@ -165,6 +165,8 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
     <section class="phero"><h1>Meet the team.</h1><p>The people behind Keyhaus.</p></section>
     <div class="org">
       <div class="node ceo"><div class="av">WC</div><b>Warren Cavanaugh</b><span>Chief Executive Officer</span></div>
+      <div class="stem"></div>
+      <div class="node ceo"><div class="av">C</div><b>COO Name</b><span>Chief Operations Officer</span></div>
       <div class="stem"></div>
       <div class="branches" id="branches"></div>
     </div>
@@ -199,25 +201,29 @@ nav a.nb{padding:9px 18px;border:1px solid var(--acc);border-radius:6px;color:va
 /* ===== SETTINGS: edit these ===== */
 const WEBHOOK = "https://discord.com/api/webhooks/1556989682774974527/en_15dDXdww8OMQPrIcFk138cxzdfNUdTQAuW9zzRnvX8Dsdf_g13ETMAj2DcZcA2CCO"; // Discord webhook for inquiries
 const HERO_IMAGE = ""; // Optional: URL of a wide photo for the home page banner
-const FEAT = ["h1","h2","m1","l1"]; // Apartment IDs shown on the home page
+const FEAT = ["m1","m2","l1","l2"]; // Apartment IDs shown on the home page
 const IMAGES = {};  // Optional: { "apartment-id": ["url1","url2","url3"] }
 
 /* ===== LISTINGS: edit freely. rent: [weekly, monthly] ===== */
-const TIERS = {H:["High-End","Premium residences with views and full service."], M:["Medium-End","Comfortable, well-located apartments for everyday living."], L:["Low-End","Simple, affordable places to start from."]};
+const TIERS = {M:["Medium-End","Comfortable, well-located apartments for everyday living."], L:["Low-End","Simple, affordable places to start from."]};
 const APTS = [
- {id:"h1",t:"H",n:"Skyline Penthouse",h:"Vinewood Hills, 1 Placeholder Ave",bd:3,ba:3,r:[4200,15500],a:1,pk:"Garage x2",sec:"24/7 Security",f:["Panoramic city view","Private elevator","Rooftop terrace","Concierge"]},
- {id:"h2",t:"H",n:"Rockford Plaza Suite",h:"Rockford Hills, 2 Placeholder Ave",bd:2,ba:2,r:[3300,12200],a:1,pk:"Garage x1",sec:"24/7 Security",f:["Floor-to-ceiling windows","Walk-in closet","Gym access","Valet"]},
- {id:"h3",t:"H",n:"Del Perro Oceanview Loft",h:"Del Perro, 3 Placeholder Blvd",bd:2,ba:2,r:[3000,11000],a:0,bal:1,pool:1,sec:"24/7 Security",f:["Ocean view","Open-plan loft","Concierge"]},
- {id:"h4",t:"H",n:"Eclipse Tower Residence",h:"West Vinewood, 4 Placeholder St",bd:3,ba:2,r:[3600,13200],a:1,pk:"Garage x2",sec:"24/7 Security",f:["Corner unit","Smart-home system","Sky lounge"]},
  {id:"m1",t:"M",n:"Alta Street Flat",h:"Alta, 5 Placeholder St",bd:2,ba:1,bal:1,r:[1500,5600],a:1,pk:"Garage x1",f:["Modern kitchen","In-unit laundry"]},
  {id:"m2",t:"M",n:"Mirror Park Studio Plus",h:"Mirror Park, 6 Placeholder Dr",bd:1,ba:1,r:[1200,4500],a:1,pk:"Street parking",f:["Lake-side street","Hardwood floors","Bike storage"]},
  {id:"m3",t:"M",n:"Little Seoul Corner Unit",h:"Little Seoul, 7 Placeholder Ave",bd:2,ba:2,r:[1400,5200],a:0,pk:"Garage x1",f:["Corner windows","Walk to shops","Secure entry"]},
  {id:"m4",t:"M",n:"Burton Courtyard Apartment",h:"Burton, 8 Placeholder Way",bd:1,ba:1,r:[1300,4800],a:1,pk:"Street parking",f:["Private courtyard","Updated bathroom","Storage unit"]},
  {id:"l1",t:"L",n:"Strawberry Walk-up",h:"Strawberry, 9 Placeholder St",bd:1,ba:1,r:[600,2200],a:1,pk:"Street parking",f:["Furnished option","Utilities nearby"]},
- {id:"l2",t:"L",n:"Davis Block Studio",h:"Davis, 10 Placeholder Ave",bd:0,ba:1,r:[700,1900],a:1,pk:"Street parking",f:["Studio layout","Kitchenette"]},
+ {id:"l2",t:"L",n:"Davis Block Studio",h:"Davis, 10 Placeholder Ave",bd:0,ba:1,r:[500,1900],a:1,pk:"Street parking",f:["Studio layout","Kitchenette"]},
  {id:"l3",t:"L",n:"La Mesa Garden Unit",h:"La Mesa, 11 Placeholder Rd",bd:1,ba:1,r:[650,2400],a:0,f:["Ground floor","Small garden","Pet friendly"]},
  {id:"l4",t:"L",n:"Vespucci Canals Room",h:"Vespucci Canals, 12 Placeholder Ln",bd:1,ba:1,r:[700,2600],a:1,pk:"Street parking",f:["Near the canals","Shared laundry"]}
 ];
+/* ===== HIGH-END (parked for now) =====
+   To bring it back: add this tier line inside TIERS, move the 4 apartments into APTS, and add h1/h2 to FEAT.
+   H:["High-End","Premium residences with views and full service."]
+ {id:"h1",t:"H",n:"Skyline Penthouse",h:"Vinewood Hills, 1 Placeholder Ave",bd:3,ba:3,r:[4200,15500],a:1,pk:"Garage x2",sec:"24/7 Security",f:["Panoramic city view","Private elevator","Rooftop terrace","Concierge"]},
+ {id:"h2",t:"H",n:"Rockford Plaza Suite",h:"Rockford Hills, 2 Placeholder Ave",bd:2,ba:2,r:[3300,12200],a:1,pk:"Garage x1",sec:"24/7 Security",f:["Floor-to-ceiling windows","Walk-in closet","Gym access","Valet"]},
+ {id:"h3",t:"H",n:"Del Perro Oceanview Loft",h:"Del Perro, 3 Placeholder Blvd",bd:2,ba:2,r:[3000,11000],a:0,bal:1,pool:1,sec:"24/7 Security",f:["Ocean view","Open-plan loft","Concierge"]},
+ {id:"h4",t:"H",n:"Eclipse Tower Residence",h:"West Vinewood, 4 Placeholder St",bd:3,ba:2,r:[3600,13200],a:1,pk:"Garage x2",sec:"24/7 Security",f:["Corner unit","Smart-home system","Sky lounge"]},
+*/
 
 /* ===== PARTNERS: [name, category, optional logo URL] ===== */
 const PARTNERS = [["Partner Name","Furniture & Decor",""],["Partner Name","Security",""],["Partner Name","Moving Services",""],["Partner Name","Insurance",""],["Partner Name","Utilities",""],["Partner Name","Banking",""]];
@@ -242,7 +248,7 @@ function seg(el,opts,key){
   el.innerHTML=opts.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${st[key]==v}">${l}</button>`).join("");
   el.onclick=e=>{const b=e.target.closest("button");if(!b)return;st[key]=b.dataset.v;draw()}}
 function draw(){
-  seg($("#fTier"),[["all","All tiers"],["H","High-End"],["M","Medium-End"],["L","Low-End"]],"tier");
+  seg($("#fTier"),[["all","All tiers"],...Object.entries(TIERS).map(([k,v])=>[k,v[0]])],"tier");
   seg($("#fAvail"),[["all","All"],["1","Available"],["0","Unavailable"]],"avail");
   seg($("#fRent"),[[0,"Weekly"],[1,"Monthly"]],"rent");
   let n=0,out="";
@@ -302,8 +308,8 @@ $("#cform").onsubmit=async e=>{
   b.disabled=false};
 const ICON={ok:"M21 12a9 9 0 11-18 0 9 9 0 0118 0zM8 12l3 3 5-6",tag:"M3 12V3h9l9 9-9 9zM7.5 7.5h.01",shield:"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z",clock:"M12 7v5l3 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z",users:"M16 20v-1a4 4 0 00-4-4H8a4 4 0 00-4 4v1M10 11a3.5 3.5 0 100-7 3.5 3.5 0 000 7zM20 20v-1a4 4 0 00-3-3.9M16 4.1a3.5 3.5 0 010 6.8",home:"M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"};
 const svg=p=>`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${p}"/></svg>`;
-const WHY=[["ok","Verified listings","Every apartment is checked and photographed before it goes live."],["tag","Clear rent","Pay weekly or monthly, with the price shown on every listing."],["shield","24/7 Security","Our High-End residences include round-the-clock security."],["clock","Fast repairs","Our maintenance team responds quickly to every request."],["users","Personal service","A dedicated agent with you from inquiry to move-in."],["home","Three tiers","From affordable starts to premium penthouses."]];
-const TESTI=[["Placeholder quote: a short line about how smooth the move-in was.","Resident Name","High-End resident"],["Placeholder quote: a short line about the maintenance team.","Resident Name","Medium-End resident"],["Placeholder quote: a short line about finding the right apartment.","Resident Name","Low-End resident"]];
+const WHY=[["ok","Verified listings","Every apartment is checked and photographed before it goes live."],["tag","Clear rent","Pay weekly or monthly, with the price shown on every listing."],["shield","Trusted partners","We work with local businesses to help with furniture, moving, and more."],["clock","Fast repairs","Our maintenance team responds quickly to every request."],["users","Personal service","A dedicated agent with you from inquiry to move-in."],["home","Two tiers","From affordable starts to comfortable everyday living."]];
+const TESTI=[["Placeholder quote: a short line about how smooth the move-in was.","Resident Name","Medium-End resident"],["Placeholder quote: a short line about the maintenance team.","Resident Name","Low-End resident"],["Placeholder quote: a short line about finding the right apartment.","Resident Name","Low-End resident"]];
 $("#stats").innerHTML=[[APTS.length,"Apartments"],[APTS.filter(a=>a.a).length,"Available now"],[Object.keys(TIERS).length,"Tiers"],["24/7","Maintenance support"]].map(([n,l])=>`<div class="stat"><b data-n="${typeof n==="number"?n:0}">${n}</b><span>${l}</span></div>`).join("");
 $("#tcards").innerHTML=Object.entries(TIERS).map(([k,[n,d]],i)=>{const L=APTS.filter(a=>a.t===k);return `<button class="tc" data-tier="${k}"><div class="eye">Tier 0${i+1}</div><h3>${n}</h3><p>${d}</p><div class="from">From ${money(Math.min(...L.map(a=>a.r[0])))} / week &middot; ${L.length} apartments</div></button>`}).join("");
 $("#why").innerHTML=WHY.map(([i,t,d])=>`<div class="wc"><div class="ic">${svg(ICON[i])}</div><h3>${t}</h3><p>${d}</p></div>`).join("");
